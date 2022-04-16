@@ -13,9 +13,9 @@ public class SpringDataJpaApplication {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(SpringDataJpaApplication.class, args);
 		ProductRepository obj= context.getBean(ProductRepository.class);
-//		System.out.println("-------------------------------------");
+		System.out.println("-------------------------------------");
 		Product product = new Product();
-		product.setId(5);
+		product.setId(6);
 		product.setName("Iphone");
 		product.setDescription("Good");
 		product.setPrice(1000D);
