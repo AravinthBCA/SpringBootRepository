@@ -18,13 +18,15 @@ class SpringBootRestApplicationTests {
 	void testGetProduct() {
 		System.out.println(baseUrl);
 		RestTemplate restTemplate = new RestTemplate();
-		Product Product = restTemplate.getForObject(baseUrl+"/products/10",Product.class);
+		Product Product = restTemplate.getForObject(baseUrl+"/products/11",Product.class);
+		Product Product1 = restTemplate.getForObject(baseUrl+"/products/9",Product.class);
+		Product Product2 = restTemplate.getForObject(baseUrl+"/products/11",Product.class);
 		System.out.println("-----------------------------------------------");
 		System.out.println("Get Method : "+Product);
 		System.out.println("-----------------------------------------------");
 	}
 	
-	@Test
+//	@Test
 	void testCreateProduct() {
 		RestTemplate restTemplate = new RestTemplate();
 		Product prod = new Product();
@@ -37,7 +39,7 @@ class SpringBootRestApplicationTests {
 		System.out.println("-----------------------------------------------");
 	}
 	
-	@Test
+//	@Test
 	void testUpdateProduct() {
 		RestTemplate restTemplate = new RestTemplate();
 		Product Prod = new Product(); 
@@ -50,7 +52,7 @@ class SpringBootRestApplicationTests {
 		System.out.println("Update Method Product Name : "+Prod.getName());
 	}
 	
-	@Test
+//	@Test
 	void testDeleteProduct() {
 		RestTemplate restTemplate = new RestTemplate();
 		Product Product = restTemplate.getForObject(baseUrl+"/products/10",Product.class);
