@@ -15,36 +15,33 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 public class AuthServerConfigurations extends WebSecurityConfigurerAdapter
         implements AuthorizationServerConfigurer {
-
+	
+    @Autowired
+    AuthenticationManager authenticationManager;
+    
+    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
+    	System.out.println("authenticationManagerBean........");
         return super.authenticationManagerBean();
     }
-
-    @Autowired
-    AuthenticationManager authenticationManager;
-
-    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
+    
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-
+    	System.out.println("AuthorizationServerSecurityConfigurer........");
         security.checkTokenAccess("permitAll()");
-
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer client) throws Exception {
-
+    	System.out.println("ClientDetailsServiceConfigurer........");
         client.inMemory().withClient("web").secret(passwordEncoder.encode("webpass")).scopes("READ", "WRITE").authorizedGrantTypes("password", "authorization_code");
-
-
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoint) throws Exception {
-        endpoint.authenticationManager(authenticationManager);
-
+    	System.out.println("AuthorizationServerEndpointsConfigurer........");
+    	endpoint.authenticationManager(authenticationManager);
     }
 }

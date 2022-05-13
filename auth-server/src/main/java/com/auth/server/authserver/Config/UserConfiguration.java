@@ -14,7 +14,7 @@ public class UserConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception {
-
+    	System.out.println("AuthenticationManagerBuilder........");
         auth.inMemoryAuthentication().withUser("krish").password(passwordEncoder.encode("krishpass")).roles("USER","ADMIN","MANAGER").authorities("CAN_READ","CAN_WRITE","CAN_DELETE").and()
                 .withUser("suranga").password(passwordEncoder.encode("surpass")).roles("USER").authorities("CAN_READ","CAN_WRITE");
     }
