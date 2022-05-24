@@ -24,13 +24,14 @@ public class JwtUtility {
 				.setIssuer("Aravinth")
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(15)))
-				.signWith(SignatureAlgorithm.HS512,secret.getBytes())
+//				.signWith(SignatureAlgorithm.HS512,secret.getBytes())
+				.signWith(SignatureAlgorithm.HS512,secret)
 				.compact();
 	}
 	
 	// Read Claims
 	public Claims getClaims(String token) {
-		return Jwts.parser().setSigningKey(secret.getBytes())
+		return Jwts.parser().setSigningKey(secret)
 				.parseClaimsJws(token)
 				.getBody();
 	}

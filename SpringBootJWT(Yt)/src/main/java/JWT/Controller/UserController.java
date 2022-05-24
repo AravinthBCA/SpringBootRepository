@@ -1,11 +1,16 @@
 package JWT.Controller;
 
 import java.security.Principal;
+import java.util.Collections;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -92,10 +97,22 @@ public class UserController {
 //		}
 //	}
 	
-	// after login only
+	// after login only it call another restservice get the data and pring
 	@GetMapping("/welcome")
-	public ResponseEntity<String> accessData(Principal token){
-		return ResponseEntity.ok("Hello User!"+token.getName());
+	public String accessData(HttpServletRequest request){
+		String authorizationHeader = request.getHeader("Authorization");
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+		System.out.println("Token in  : "+authorizationHeader);
+		ResponseEntity str = null;
+		if(authorizationHeader != null) {
+			httpHeaders.add("Authorization", "Bearer "+authorizationHeader);
+			System.out.println(httpHeaders.toString());
+			HttpEntity<String> customerHttpEntity = new HttpEntity<>(httpHeaders);
+			ResponseEntity<String> str1 = restTemplate.exchange("http://localhost:8082", HttpMethod.GET, customerHttpEntity,String.class);
+			return str1.getBody();
+		}
+		return null;
 	}
 	
 }
