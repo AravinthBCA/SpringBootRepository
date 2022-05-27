@@ -4,8 +4,7 @@ import java.util.*;
 import javax.persistence.*;
 import lombok.*;
 
-@Data
-@Entity
+@Data@Entity
 @Table(name="user")
 public class UserModel {
 

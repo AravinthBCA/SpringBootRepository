@@ -1,6 +1,7 @@
 package JWT;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,6 +36,12 @@ public class SecurityFilter extends OncePerRequestFilter{
 		// read token from Auth head
 		String token = request.getHeader("Authorization");
 		System.out.println("Token in securityFileter : "+token);
+		
+//		ArrayList<GrantedAuthority> list = new ArrayList<>();
+//		list.add(new SimpleGrantedAuthority("Role_admin"));
+//		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken("aravinth","password",list);
+//		SecurityContextHolder.getContext().setAuthentication(authToken);
+		
 		if(token!=null) {
 			// do validation
 			String username = util.getUsername(token);
