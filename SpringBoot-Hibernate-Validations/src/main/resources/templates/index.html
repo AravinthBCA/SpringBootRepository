@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+</head>
+<body>
+	<h1 align="center">Love Calculator</h1>
+
+	<form th:action="@{/process}" th:object="${user}"
+		method="get">
+		<div align="center">
+		
+			<p> <label>Your Name:</label> <input type="text" th:field="*{firstName}" />
+				<span th:if="${#fields.hasErrors('firstName')}"
+				th:errors="*{firstName}" style="color:red;margin-left:30px;position:fixed;text-align:left"></span>
+			</p>
+	
+			<p> <label>last Name:</label> <input type="text" th:field="*{lastName}" />
+				<span th:if="${#fields.hasErrors('lastName')}"
+				th:errors="*{lastName}" style="color:red;margin-left:30px;position:fixed;text-align:left"></span>
+			</p>
+			
+			<p> <label>Age:</label> <input type="number" th:field="*{age}" />
+				<span th:if="${#fields.hasErrors('age')}"
+				th:errors="*{age}" style="color:red;margin-left:30px;position:fixed;text-align:left"></span>
+			</p>
+			
+			<p> <label>Phone Number : </label> <input type="number" th:field="*{phoneNumber}" />
+				<span th:if="${#fields.hasErrors('phoneNumber')}"
+				th:errors="*{phoneNumber}" style="color:red;margin-left:30px;position:fixed;text-align:left"></span>
+			</p>
+			
+			<p>	<input type="checkbox" th:field="*{termAndCondition}" />
+				</td>
+				<lable>i am agreeing that this for fun</lable>
+				<span th:if="${#fields.hasErrors('termAndCondition')}"
+				th:errors="*{termAndCondition}" style="color:red;margin-left:30px;position:fixed;text-align:left"></span>
+			</p>
+			
+			<p> <button type="submit">Submit</button> </p>
+			
+		</div>
+	</form>
+
+</body>
+</html>
