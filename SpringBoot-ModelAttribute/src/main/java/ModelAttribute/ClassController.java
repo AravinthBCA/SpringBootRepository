@@ -29,10 +29,16 @@ public class ClassController {
 		return website;
 	}
 
+	@ModelAttribute("header")
+	String header() {
+		System.out.println("header method invoked....");
+		return "aravinth header";
+	}
+	
 //	parameter is optional whenever you want to perform business logic based on the @ModelAttribute
 // to get that data using Model( like Model model ) or ModelAttribute( like @ModelAttribute("websiteIn
 //	fo") WebSiteInfoDTO website){} then perform you business logic.
-	
+	 
 	@GetMapping("/")
 	public String index(Model model) {
 //		WebsiteInfoDTO website = (WebsiteInfoDTO) model.getAttribute("websiteInfo");

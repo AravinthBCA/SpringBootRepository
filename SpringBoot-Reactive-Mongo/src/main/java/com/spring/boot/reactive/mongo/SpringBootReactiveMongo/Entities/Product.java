@@ -20,6 +20,10 @@ public class Product {
 		this.price = price;
 	}
 
+	public Product() {
+		System.out.println("Constructor called....");
+	}
+
 	public String getId() {
 		return id;
 	}
