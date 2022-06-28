@@ -4,23 +4,23 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Product {
+public class Products {
 	
 	@Id
 	private String id;
 	private String name;
 	private String description;
-	private Double price;
+//	private Double price;
 	
-	public Product(String id, String name, String description, Double price) {
+	public Products(String id, String name, String description, Double price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.price = price;
+//		this.price = price;
 	}
 
-	public Product() {
+	public Products() {
 		System.out.println("Constructor called....");
 	}
 
@@ -48,16 +48,16 @@ public class Product {
 		this.description = description;
 	}
 
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+//	public Double getPrice() {
+//		return price;
+//	}
+//
+//	public void setPrice(Double price) {
+//		this.price = price;
+//	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + "]";
 	}	
 }

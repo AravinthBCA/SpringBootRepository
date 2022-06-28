@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.boot.reactive.mongo.SpringBootReactiveMongo.Entities.Product;
+import com.spring.boot.reactive.mongo.SpringBootReactiveMongo.Entities.Products;
 import com.spring.boot.reactive.mongo.SpringBootReactiveMongo.Repos.ProductRepository;
 
 import reactor.core.publisher.Flux;
@@ -26,13 +26,13 @@ public class ProductController {
 	ProductRepository repo;
 	
 	@PostMapping
-	public Mono<Product> addProduct(@RequestBody Product product){
+	public Mono<Products> addProduct(@RequestBody Products product){
 		return repo.save(product);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public Flux<Product> getProducts(){
-		 Flux<Product> emps = repo.findAll();
+	public Flux<Products> getProducts(){
+		 Flux<Products> emps = repo.findAll();
 		 return emps;
 	}
 }
