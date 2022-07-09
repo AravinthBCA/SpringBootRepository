@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import JWT.JwtUtil;
 import JWT.Model.AuthenticationRequest;
 import JWT.Model.AuthenticationResponse;
+import JWT.Model.DAOUser;
+import JWT.Model.UserDTO;
 import JWT.Service.MyUserDetailsService;
 
 @RestController  // RestController it return the data
@@ -50,5 +52,15 @@ public class JwtController {
 		final String jwt = jwtUtil.generateToken(userDetails);
 		
 		return ResponseEntity.ok(new AuthenticationResponse(jwt,"Token created successfull for "+request.getUsername()));
+	}
+	
+	@PostMapping("/saveUser")
+	public String saveUser(@RequestBody UserDTO user){
+		if(userDetailsService.save(user) != null) {
+			return "User saved Successfully "+user.getUsername();
+		}
+		else {
+			return "User Not Saved...";
+		}
 	}
 }
