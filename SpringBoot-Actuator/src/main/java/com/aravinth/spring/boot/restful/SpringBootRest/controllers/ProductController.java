@@ -20,7 +20,7 @@ import com.aravinth.spring.boot.restful.SpringBootRest.entities.Product;
 
 @RestController
 @RequestMapping("/products")
-public class ProductController1{
+public class ProductController{
 	
 	@Autowired
 	ProductRepo repo;
