@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.aravinth.spring.boot.restful</groupId>
-	<artifactId>SpringBootRest</artifactId>
+	<artifactId>SpringBoot-SwaggerApi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBootRest</name>
+	<name>SpringBoot-SwaggerApi</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
