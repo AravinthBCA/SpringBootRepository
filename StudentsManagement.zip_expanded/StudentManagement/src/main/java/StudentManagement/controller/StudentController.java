@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import StudentManagement.entity.Student;
+import StudentManagement.service.StaffService;
 import StudentManagement.service.StudentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RestController
 public class StudentController {
@@ -23,35 +27,27 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
+	@Autowired
+	private StaffService staffService;
+	
 	@GetMapping("/")
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("index");
 	    return mav;
 	}
 	
-	@GetMapping("/student/all")
-	public ResponseEntity<List<Student>> getallStudents(Model model){
-		model.addAttribute("students",studentService.getAllStudents());
-		System.out.println(model.toString());
+	@GetMapping("/student/all")	
+	@Operation(summary="Return all Students",description="Returning all Students")
+	public @ApiResponse(description="Student Object") ResponseEntity<List<Student>> getallStudents(Model model){
 		return new ResponseEntity<List<Student>>(studentService.getAllStudents(),HttpStatus.OK);
-//		return "pages/tables/show_students";
 	}
 	
 	@GetMapping("/student/count")
 	public ResponseEntity<List<Integer>> getStudentCount(){
-		int stuCount = studentService.getStudentCount();
-		System.out.println(stuCount);
-		return new ResponseEntity<List<Integer>>(List.of(50,stuCount),HttpStatus.OK);
+		int studentCount = studentService.getStudentCount();
+		int staffCount = staffService.getStaffCount();
+		return new ResponseEntity<List<Integer>>(List.of(staffCount,studentCount),HttpStatus.OK);
 	}
-	
-//	@GetMapping("/students/new")
-//	public String createStudentForm(Model model) {
-//		// create student object to hold student form data
-//		model.addAttribute("students",studentService.getAllStudents());
-//		System.out.println(model.toString());
-//		return "createStudent";
-//		
-//	} 
 	
 	@ModelAttribute("student")
     public Student studentRegistrationDto() {
@@ -67,7 +63,8 @@ public class StudentController {
 	}
 	
 	@DeleteMapping("/student/delete/{id}")
-	public ResponseEntity deleteStudent(@PathVariable("id") int id ) {
+	@Operation(summary="Return a Student",description="Returning a Students")
+	public @ApiResponse(description="Student Object") ResponseEntity deleteStudent(@Parameter(description="Id of the Product") @PathVariable("id") int id ) {
 		System.out.println("id -> "+id);
 		studentService.deleteStudent(id);
 		return new ResponseEntity(HttpStatus.OK);

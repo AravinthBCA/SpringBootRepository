@@ -1,11 +1,14 @@
 package StudentManagement.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,20 +33,24 @@ public class Staff {
 	@Column(name="LAST_NAME")
 	private String lastName;
 	
-	@Column(name="AGE")
-	private Integer age;
+	@Column(name="DEPARTMENT")
+	private String department;
+	
+	@Column(name="GENDER")
+	private String gender;
 	
 	@Column(name="MOBILE_NO")
 	private Integer mobileNo;
 	
-	@Column(name="COUNTRY")
-	private String country;
+	@Column(name="EMAIL")
+	private String email;
 	
-	@Column(name="DEGREE")
-	private String degree;
+	@Transient
+	@Column(name="JOINING_DATE")
+	private LocalDate joiningDate;
 	
 	@Column(name="EXPERIENCE")
-	private Integer experience;
+	private String experience;
 	
 }
 

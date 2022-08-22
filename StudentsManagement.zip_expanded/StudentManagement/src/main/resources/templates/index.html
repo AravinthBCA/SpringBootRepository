@@ -32,7 +32,8 @@
 					tr.push('<p>' + (i+1) + '<p>');
 					tr.push('<p>' + json[i].firstName + '<p>');
 					console.log(json[1]);
-					document.getElementById('stu_count').innerHTML = json[1];
+					document.getElementById('staff_count').innerHTML = json[0];
+					document.getElementById('student_count').innerHTML = json[1];
 				}
 				$('table').append($(tr.join('')));
 			});
@@ -311,91 +312,13 @@
       </div>
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      <div id="left_nav"></div> 
-   <!--    <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Students</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/add_student.html">Add Student</a></li>
-              </ul>
-            </div>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/show_students.html">Student Details</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Staffs</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/add_student.html">All Staff</a></li>
-              </ul>
-            </div>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/add_student.html">About Staff</a></li>
-              </ul>
-            </div>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/show_students.html">Staff Classes</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Attendance</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/add_student.html">Staffs Attendance</a></li>
-              </ul>
-            </div>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/show_students.html">Students Attendance</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">Departments</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/add_student.html">All Departments</a></li>
-              </ul>
-            </div>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/student/show_students.html">Add Departments</a></li>
-              </ul>
-            </div>
-          </li>
- 		</ul>
-      </nav>
-     -->  <!-- partial -->
+      
+    
+      <!-- left-side nav bar -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+    
+    
+      <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
@@ -447,8 +370,8 @@
                 <div class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-tale">
                     <div class="card-body">
-                      <p class="mb-4">Number of Professors</p>
-                      <p class="fs-30 mb-2">406</p>
+                      <p class="mb-4">Number of Teachers</p>
+                      <p class="fs-30 mb-2" id="staff_count">0</p>
                       <p>15.00% (last year)</p>
                     </div>
                   </div>
@@ -457,7 +380,7 @@
                   <div class="card card-dark-blue">
                     <div class="card-body">
                       <p class="mb-4">Number of Students</p>
-                      <p class="fs-30 mb-2" id="stu_count">0</p>
+                      <p class="fs-30 mb-2" id="student_count">0</p>
                       <p>10.22% (last year)</p>
                     </div>
                   </div>
@@ -524,7 +447,7 @@
   <script src="js/Chart.roundedBarCharts.js"></script>
   <script type="text/javascript">
 	 $(function(){
-		 $("#left_nav").load("../../partials/left_nav.html"); 
+		 $("#sidebar").load("../../partials/left_nav.html"); 
 	 });
 	 $(function(){
 		 $("#right_nav").load("../../partials/right_nav.html");  
