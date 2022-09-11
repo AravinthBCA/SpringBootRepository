@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 
 @SpringBootApplication
 @OpenAPIDefinition(info=@Info(title="Product API",version="1.0",description="This API is for Products..."))
-//above annotation used for set the title and description for swagger
+//above annotation used for set the title and description for swagger api
 public class SpringBootRestApplication {
 
 	public static void main(String[] args) {

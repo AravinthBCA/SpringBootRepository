@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,12 +39,11 @@ public class Staff {
 	private String gender;
 	
 	@Column(name="MOBILE_NO")
-	private Integer mobileNo;
+	private Long mobileNo;
 	
 	@Column(name="EMAIL")
 	private String email;
 	
-	@Transient
 	@Column(name="JOINING_DATE")
 	private LocalDate joiningDate;
 	

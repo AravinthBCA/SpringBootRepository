@@ -41,7 +41,7 @@ public class Student {
 	private String degree;
 	
 	@Column(name="MOBILENO")
-	private Integer mobileNo;
+	private Long mobileNo;
 	
 	@Column(name="EMAIL")
 	private String email;
